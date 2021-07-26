@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.sun.istack.NotNull;
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.Id;
 
@@ -18,8 +18,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 
-@Data
 @Entity
+@Builder(toBuilder = true)
+@AllArgsConstructor
+@Getter
 public class Word {
 
     @Id
@@ -31,7 +33,7 @@ public class Word {
 
     @NotNull
     @NotBlank(message = "Word is required")
-    @Pattern(message = "Word can contain only letters and/or numbers", regexp = "[A-Z0-9]+")
+    @Pattern(message = "Word can contain only letters and/or numbers", regexp = "[a-zA-Z0-9]*")
     private String word;
 
     @NotNull
@@ -39,6 +41,10 @@ public class Word {
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime created;
+
+    public Word(){
+
+    }
 
 
 }

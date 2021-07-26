@@ -29,7 +29,7 @@ public class MigrationService {
     }
 
     @Caching(evict = { @CacheEvict(value = WORDS_CACHE, allEntries = true), }, put = {
-            @CachePut(value = WORDS_CACHE, key = "#word.getForeign_id()", unless="#result == null") })
+    @CachePut(value = WORDS_CACHE, key = "#word.getForeign_id()", unless="#result == null") })
     public void addWord(Word word){
         if(word.getCreated().isBefore(EARLIEST_POSSIBLE_DATE)){
             throw new InvalidParameterException("Dates earlier than 2015-01-01 are not allowed, therefore data are not saved to DB");
@@ -46,7 +46,7 @@ public class MigrationService {
     public Word findByForeignId(int foreignId){
         return wordRepository.findByForeign_id(foreignId);
     }
-    private boolean foreignKeyExists(int foreignId){
+    public boolean foreignKeyExists(int foreignId){
         return nonNull(wordRepository.findByForeign_id(foreignId));
     }
 }
