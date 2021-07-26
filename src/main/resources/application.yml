@@ -1,0 +1,22 @@
+server:
+  port: 8081
+spring:
+  cache.type: redis
+  redis:
+    host: localhost
+    port: 6379
+  jackson:
+    local-date-time-format: yyyy-MM-dd HH:mm:ss
+    local-date-format: yyyy-MM-dd
+    local-time-format: HH:mm:ss
+  h2.console.enabled: true
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:OCR;
+  sql:
+    init:
+      username: sa
+      password:
+
+
+
