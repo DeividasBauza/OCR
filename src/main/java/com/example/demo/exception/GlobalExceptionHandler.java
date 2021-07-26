@@ -1,6 +1,5 @@
 package com.example.demo.exception;
 
-import javassist.NotFoundException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;

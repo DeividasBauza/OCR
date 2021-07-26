@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Word;
-import com.example.demo.repository.WordRepository;
 import com.example.demo.service.MigrationService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
